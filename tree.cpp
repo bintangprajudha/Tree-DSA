@@ -196,41 +196,35 @@ void bfs(adrNode root) {
     }
 }
 
-/*
-adrNode deleteBST(adrNode root, infotype x) {
-    if (root == NULL) {
-        // Elemen tidak ditemukan, kembalikan root
-        return root;
-    }
+void deleteNode_103032330147(adrNode &root, adrNode &p) {
+    if (root == nullptr || p == nullptr) return;
 
-    if (x < root->info) {
-        // Rekursif ke subtree kiri
-        root->left = deleteBST(root->left, x);
-    } else if (x > root->info) {
-        // Rekursif ke subtree kanan
-        root->right = deleteBST(root->right, x);
+    if (p->info < root->info) {
+        deleteNode_103032330147(root->left, p);
+    } else if (p->info > root->info) {
+        deleteNode_103032330147(root->right, p);
     } else {
-        // Node ditemukan
-        if (root->left == NULL) {
-            // Hanya memiliki subtree kanan atau tidak memiliki anak
-            adrNode temp = root->right;
-            root->info = 0;  // Opsional: Reset nilai sebelum menghapus referensi
-            root->left = root->right = NULL;
-            return temp;
-        } else if (root->right == NULL) {
-            // Hanya memiliki subtree kiri
-            adrNode temp = root->left;
-            root->info = 0;  // Opsional: Reset nilai sebelum menghapus referensi
-            root->left = root->right = NULL;
-            return temp;
+        if (root->left == nullptr && root->right == nullptr) {
+            delete root;
+            root = nullptr;
         }
 
-        // Memiliki kedua anak
-        adrNode temp = findLeftBinTree(root->right);
-        root->info = temp->info; // Salin nilai pengganti
-        root->right = deleteBST(root->right, temp->info); // Hapus node pengganti
-    }
+        else if (root->left == nullptr) {
+            adrNode temp = root;
+            root = root->right;
+            delete temp;
+        }
 
-    return root;
+        else if (root->right == nullptr) {
+            adrNode temp = root;
+            root = root->left;
+            delete temp;
+        }
+
+        else {
+            adrNode temp = findMin_103032330147(root->right);
+            root->info = temp->info;
+            deleteNode_103032330147(root->right, temp);
+        }
+    }
 }
-*/
