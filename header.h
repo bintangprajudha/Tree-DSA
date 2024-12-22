@@ -39,6 +39,6 @@ int levelTree(adrNode root);
 int levelNode(adrNode root, infotype x);
 
 void bfs(adrNode root);
-void deleteNode_103032330147(adrNode &root, adrNode &p);
+void deleteNode(adrNode &root, adrNode &p);
 
 #endif // HEADER_H_INCLUDED
