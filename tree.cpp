@@ -196,7 +196,7 @@ void bfs(adrNode root) {
     }
 }
 
-void deleteNode_103032330147(adrNode &root, adrNode &p) {
+void deleteNode(adrNode &root, adrNode &p) {
     if (root == nullptr || p == nullptr) return;
 
     if (p->info < root->info) {
