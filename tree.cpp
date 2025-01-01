@@ -196,13 +196,13 @@ void bfs(adrNode root) {
     }
 }
 
-void deleteNode(adrNode &root, adrNode &p) {
-    if (root == nullptr || p == nullptr) return;
-
-    if (p->info < root->info) {
-        deleteNode(root->left, p);
-    } else if (p->info > root->info) {
-        deleteNode(root->right, p);
+adrNode deleteNode(adrNode &root, infotype x) {
+    if (root == nullptr){
+        return root;
+    } else if (x < root->info) {
+        root->left = deleteNode(root->left, x);
+    } else if (x > root->info) {
+        root->right = deleteNode(root->right, x);
     } else {
         if (root->left == nullptr && root->right == nullptr) {
             delete root;
@@ -224,7 +224,8 @@ void deleteNode(adrNode &root, adrNode &p) {
         else {
             adrNode temp = findMin(root->right);
             root->info = temp->info;
-            deleteNode(root->right, temp);
+            root->right = deleteNode(root->right, temp);
         }
     }
+    return root;
 }
