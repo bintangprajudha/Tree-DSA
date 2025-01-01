@@ -200,9 +200,9 @@ void deleteNode(adrNode &root, adrNode &p) {
     if (root == nullptr || p == nullptr) return;
 
     if (p->info < root->info) {
-        deleteNode_103032330147(root->left, p);
+        deleteNode(root->left, p);
     } else if (p->info > root->info) {
-        deleteNode_103032330147(root->right, p);
+        deleteNode(root->right, p);
     } else {
         if (root->left == nullptr && root->right == nullptr) {
             delete root;
@@ -222,9 +222,9 @@ void deleteNode(adrNode &root, adrNode &p) {
         }
 
         else {
-            adrNode temp = findMin_103032330147(root->right);
+            adrNode temp = findMin(root->right);
             root->info = temp->info;
-            deleteNode_103032330147(root->right, temp);
+            deleteNode(root->right, temp);
         }
     }
 }
