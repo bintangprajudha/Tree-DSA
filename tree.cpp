@@ -178,8 +178,7 @@ void bfs(adrNode root) {
     q.push(root); // Memasukkan root ke dalam queue
 
     while (!q.empty()) {
-        adrNode current = q.front();
-        q.pop();
+        current = q.pop()
 
         cout << current->info << " ";
 
