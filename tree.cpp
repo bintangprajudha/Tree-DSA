@@ -166,10 +166,6 @@ int depth(adrNode root, infotype x){
     return -1;  // Node tidak ditemukan
 }
 
-int levelTree(adrNode root){
-    return height(root) + 1;
-}
-
 int levelNode(adrNode root, infotype x){
     return 1 + depth(root, x);
 }
